@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "analex.h"
 
 int token;
@@ -34,14 +32,15 @@ void E_linha(){
     switch(token){
     case '+':
         reconhecer('+');
-        break;
-    case '-':
-        reconhecer('-');
-        break;
-    default:
         T();
         E_linha();
         break;
+    case '-':
+        reconhecer('-');
+        T();
+        E_linha();
+        break;
+
     }
 }
 
@@ -62,9 +61,6 @@ void T_linha(){
         F();
         T_linha();
         break;
-    default:
-        erro();
-        break;
     }
 }
 
@@ -79,7 +75,6 @@ void F(){
         reconhecer(')');
         break;
 
-
     }
 }
 
@@ -91,4 +86,3 @@ main() {
    else
      printf("Sucesso!!\n");
 }
-
