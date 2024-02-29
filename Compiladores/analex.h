@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <ctype.h>
-
 #define NUM 256
 //#define ID  257
 //#define QUIT 258
@@ -28,7 +26,9 @@ switch (ch){
     case '-': return '-';
     break;
 
-    case '+': return '+';
+    case '+': return '+';    if ( ch == '+')
+    return '+';
+
     break;
 
     case '/': return '/';

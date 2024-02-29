@@ -1,7 +1,16 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
 #include "analex.h"
+#include "pilha.h"
+
+/*
+    pilha.h realiza a funcao semantica
+    analex.h realiza a funcao lexica
+*/
 
 int token;
-
+void P();
 void E();
 void T();
 void E_linha();
@@ -11,7 +20,7 @@ void erro();
 void reconhecer(int tok);
 
 void erro() {
-	printf("Erro sintatico\n");
+	printf("Erro sintatico na linha %d\n", line);
 	exit(1);
 }
 
@@ -22,6 +31,13 @@ void reconhecer(int tok) {
 	  erro();
 }
 
+void P(){
+    E();
+    if (token == ';')
+        printf("\n%d\n", topo());
+    else
+        erro();
+}
 // implementar aqui
 void E() {
     T();
@@ -33,11 +49,23 @@ void E_linha(){
     case '+':
         reconhecer('+');
         T();
+        printf("+ ");
+        //5 6 + (testando com 5+6;)
+        a = pop();
+        b = pop();
+        push(b+a);
+
         E_linha();
         break;
     case '-':
         reconhecer('-');
         T();
+        printf("- ");
+
+        a = pop();
+        b = pop();
+        push(b-a);
+
         E_linha();
         break;
 
@@ -54,11 +82,23 @@ void T_linha(){
     case '*':
         reconhecer('*');
         F();
+        printf("* ");
+
+        a = pop();
+        b = pop();
+        push(b*a);
+
         T_linha();
         break;
     case '/':
         reconhecer('/');
         F();
+        printf("/ ");
+
+        a = pop();
+        b = pop();
+        push(b/a);
+
         T_linha();
         break;
     }
@@ -67,7 +107,10 @@ void T_linha(){
 void F(){
     switch(token){
     case NUM:
+        printf("%d ", tokenval);
+        push(tokenval);
         reconhecer(NUM);
+
         break;
     case '(':
         reconhecer('(');
@@ -78,11 +121,9 @@ void F(){
     }
 }
 
-main() {
+
+int main() {
    token = analex();
-   E();
-   if (token != ';')
-     erro();
-   else
-     printf("Sucesso!!\n");
+   P();
+
 }
