@@ -5,7 +5,7 @@
 #include "pilha.h"
 
 /*
-    pilha.h realiza a funcao semantica
+    pilha.h realiza a traducao
     analex.h realiza a funcao lexica
 */
 
