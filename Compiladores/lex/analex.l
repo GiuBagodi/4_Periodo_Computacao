@@ -1,7 +1,7 @@
     // definicoes regulares declaracoes
 %{
 #include <stdio.h>
-int numeros=0, palavras=0, linha=0;
+int numeros=0, palavras=0, linha=1;
 %}
 
 %%

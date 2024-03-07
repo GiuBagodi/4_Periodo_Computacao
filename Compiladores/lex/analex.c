@@ -446,7 +446,7 @@ char *yytext;
 #line 2 "analex.l"
     // definicoes regulares declaracoes
 #include <stdio.h>
-int numeros=0, palavras=0, linha=0;
+int numeros=0, palavras=0, linha=1;
 #line 451 "analex.c"
 #line 452 "analex.c"
 
