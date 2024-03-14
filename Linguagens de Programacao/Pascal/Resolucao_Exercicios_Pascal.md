@@ -3,8 +3,8 @@
 
 program ProdutoNumeros;  
 begin  
-  WriteLn('O produto de 28 por 43 é: ', 28 * 43);  
-  ReadLn;  
+    WriteLn('O produto de 28 por 43 é: ', 28 * 43);  
+    ReadLn;  
 end.  
 
 # 2 - Média Aritmética de Três Números:  
@@ -12,14 +12,14 @@ end.
 program MediaAritmetica;  
 var n1, n2, n3: Integer;  
 begin  
-  Write('Digite o primeiro número: ');  
-  ReadLn(n1);  
-  Write('Digite o segundo número: ');  
-  ReadLn(n2);  
-  Write('Digite o terceiro número: ');  
-  ReadLn(n3);  
-  WriteLn('A média é: ', (n1 + n2 + n3) / 3:0:2);  
-  ReadLn;  
+    Write('Digite o primeiro número: ');  
+    ReadLn(n1);  
+    Write('Digite o segundo número: ');  
+    ReadLn(n2);  
+    Write('Digite o terceiro número: ');  
+    ReadLn(n3);  
+    WriteLn('A média é: ', (n1 + n2 + n3) / 3:0:2);  
+    ReadLn;  
 end.  
 
 # 3 - Sucessor e Antecessor de um Número:
