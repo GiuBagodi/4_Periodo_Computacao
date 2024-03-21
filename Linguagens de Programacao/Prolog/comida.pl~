@@ -29,9 +29,5 @@ pai('joao','pedro').
 irmao(X,Y):- pai(Z,X), pai(Z,Y),X \= Y.
 tio(X,Y) :- pai(Z,Y), irmao(X,Z).
 
-maior_valor(X,Y) :-
-    (   X>Y -> write('Valor de x eh maior');
-    write('Valor de y eh maior')).
-
 
 
