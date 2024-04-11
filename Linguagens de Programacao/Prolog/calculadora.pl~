@@ -1,0 +1,16 @@
+calculadora :-
+    write("Digite a operacao :(+,-,*,/)"),nl,
+    read(Operacao),
+    write("Digite o primeiro valor: "),nl,
+    read(Valor1),
+    write("Digite o segundo valor: "),
+    read(Valor2),
+    write(Operacao),
+    write(Valor1),
+    write(Valor2),
+
+   (Operacao == '+' -> Operacao is Valor1+Valor2
+   ;Operacao == '-' -> Operacao is Valor1-Valor2
+   ;Operacao == '*' -> Operacao is Valor1*Valor2
+   ;Operacao == '/' -> Operacao is Valor1/Valor2).
+
