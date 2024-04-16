@@ -24,7 +24,23 @@
 #define OR 282
 #define INC 283
 #define DEC 284
-
-
-
+#define AT_SOMA 285
+#define AT_SUBT 286
+#define AT_MULT 287
+#define AT_DIV 288
+#define STRUCT 289
+#define RETURN 290
+#define INCLUDE 291
+#define DEFINE 292
+#define SWITCH 293
+#define CASE 294
+#define BREAK 295
+#define DEFAULT 296
+#define TYPEDEF 297
+#define TRUE 298
+#define FALSE 299
+#define AT_MOD 300
+#define DESL_ESQ 301
+#define DESL_DIR 302
+#define SIZEOF 303
 

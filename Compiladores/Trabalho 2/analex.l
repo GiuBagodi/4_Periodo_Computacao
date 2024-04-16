@@ -25,13 +25,36 @@ int yyerror(char *s) {
 "printf" {return PRINTF;}
 "scanf" {return SCANF;}
 "for" {return FOR;}
+"return" {return RETURN;}
+"include" {return INCLUDE;}
+"define" {return DEFINE;}
+"switch" {return SWITCH;}
+"case" {return CASE;}
+"break" {return BREAK;}
+"default" {return DEFAUT;}
+"struct" {return STRUCT;}
+"typedef" {return TYPEDEF;}
+"TRUE" {return TRUE;}
+"FALSE" {return FALSE;}
+"sizeof" {return SIZEOF;}
+"#" {return '#';}
 "&" {return '&';}
 "&&" {return AND;}
 "||" {return OR;}
+"!" {return '!';}
 "|" {return '|';}
 "%" {return '%';}
+"^" {return '^';}
+"~" {return '~';}
+"<<" {return DESL_ESQ;}
+">>" {return DESL_DIR;}
 "++" {return INC;}
 "--" {return DEC;}
+"+=" {return AT_SOMA;}
+"-=" {return AT_SUBT;}
+"*=" {return AT_MULT;}
+"/=" {return AT_DIV;}
+"%=" {return AT_MOD;}
 ">="  { return GE;}
 "<="  { return LE;}
 "=="  { return EQ;}
@@ -44,6 +67,11 @@ int yyerror(char *s) {
 "*"   { return '*'; }
 "/"   { return '/'; }
 ";"   { return ';'; }
+":" {return ':';}
+"_" {return '_';}
+"." {return '.';}
+"[" {return '[';}
+"]" {return ']';}
 "("   { return '('; }
 ")"   { return ')'; }
 "{"   { return '{'; }
