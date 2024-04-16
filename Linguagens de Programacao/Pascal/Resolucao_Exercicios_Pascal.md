@@ -8,7 +8,7 @@ begin
 end.  
 ```
 ## 2 - Média Aritmética de Três Números:  
-```
+```pascal
 program MediaAritmetica;  
 var n1, n2, n3: Integer;  
 begin  
@@ -23,7 +23,7 @@ begin
 end.  
 ```
 ## 3 - Sucessor e Antecessor de um Número:
-```
+```pascal
 program SucessorAntecessor;  
 var numero: Integer;  
 begin  
@@ -34,7 +34,7 @@ begin
 end.  
 ```
 ## 4 - Soma de Dois Números:
-```
+```pascal
 program SomaNumeros;  
 var n1, n2: Integer;  
 begin  
@@ -47,7 +47,7 @@ begin
 end.  
 ```
 ## 5 - Terça Parte de um Número:
-```
+```pascal
 program TercaParte;  
 var numero: Real;  
 begin  
@@ -58,7 +58,7 @@ begin
 end.  
 ```
 ## 6 - Quociente e Resto de Dois Números:
-```
+```pascal
 program QuocienteResto;  
 var n1, n2: Integer;  
 begin  
@@ -72,7 +72,7 @@ begin
 end.  
 ```
 ## 7 - Média Ponderada de Quatro Números:
-```
+```pascal
 program MediaPonderada;
 var n1, n2, n3, n4: Real;
 begin
