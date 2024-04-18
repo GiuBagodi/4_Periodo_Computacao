@@ -31,7 +31,7 @@ int yyerror(char *s) {
 "switch" {return SWITCH;}
 "case" {return CASE;}
 "break" {return BREAK;}
-"default" {return DEFAUT;}
+"default" {return DEFAULT;}
 "struct" {return STRUCT;}
 "typedef" {return TYPEDEF;}
 "TRUE" {return TRUE;}
