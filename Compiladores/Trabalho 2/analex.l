@@ -22,20 +22,14 @@ int yyerror(char *s) {
 "short" {return SHORT;}
 "unsigned" {return UNSIGNED;}
 "signed" {return SIGNED;}
-"printf" {return PRINTF;}
-"scanf" {return SCANF;}
 "for" {return FOR;}
 "return" {return RETURN;}
-"include" {return INCLUDE;}
-"define" {return DEFINE;}
 "switch" {return SWITCH;}
 "case" {return CASE;}
 "break" {return BREAK;}
 "default" {return DEFAULT;}
 "struct" {return STRUCT;}
 "typedef" {return TYPEDEF;}
-"TRUE" {return TRUE;}
-"FALSE" {return FALSE;}
 "sizeof" {return SIZEOF;}
 "#" {return '#';}
 "&" {return '&';}
@@ -100,5 +94,4 @@ int token;
 	}
 	imprime();
 }
-
 
