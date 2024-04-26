@@ -60,44 +60,39 @@ extern int yydebug;
     IF = 261,                      /* IF  */
     ELSE = 262,                    /* ELSE  */
     WHILE = 263,                   /* WHILE  */
-    GE = 264,                       /* GE  */
-    LE = 265,
-    NE = 266,
-    EQ = 267,
-    NUM = 268,
-    ID = 269,
-    FLOAT = 270,
-    CHAR = 271,
-    DOUBLE = 272,
-    VOID = 273,
-    LONG = 274,
-    SHORT = 275,
-    UNSIGNED = 276,
-    SIGNED = 277,
-    SIZEOF = 278,
-    AT_MOD = 279,
-    FOR = 280,
-    AND = 281,
-    OR = 282,
-    INC = 283,
-    DEC = 284,
-    AT_SOMA = 285,
-    AT_SUBT = 286,
-    AT_MULT = 287,
-    AT_DIV = 288,
-    STRUCT = 289,
-    RETURN = 290,
-    DESL_DIR = 291,
-    DESL_ESQ = 292,
-    SWITCH = 293,
-    CASE = 294,
-    BREAK = 295,
-    DEFAULT = 296,
-    TYPEDEF = 297,
-    DESL_ESQ = 298,
-    DESL_DIR = 299,
-    SIZEOF = 300
-
+    GE = 264,                      /* GE  */
+    DO = 265,                      /* DO  */
+    LE = 266,                      /* LE  */
+    NE = 267,                      /* NE  */
+    EQ = 268,                      /* EQ  */
+    FLOAT = 269,                   /* FLOAT  */
+    CHAR = 270,                    /* CHAR  */
+    DOUBLE = 271,                  /* DOUBLE  */
+    VOID = 272,                    /* VOID  */
+    LONG = 273,                    /* LONG  */
+    SHORT = 274,                   /* SHORT  */
+    UNSIGNED = 275,                /* UNSIGNED  */
+    SIGNED = 276,                  /* SIGNED  */
+    SIZEOF = 277,                  /* SIZEOF  */
+    AT_MOD = 278,                  /* AT_MOD  */
+    FOR = 279,                     /* FOR  */
+    AND = 280,                     /* AND  */
+    OR = 281,                      /* OR  */
+    INC = 282,                     /* INC  */
+    DEC = 283,                     /* DEC  */
+    AT_SOMA = 284,                 /* AT_SOMA  */
+    AT_SUBT = 285,                 /* AT_SUBT  */
+    AT_MULT = 286,                 /* AT_MULT  */
+    AT_DIV = 287,                  /* AT_DIV  */
+    STRUCT = 288,                  /* STRUCT  */
+    RETURN = 289,                  /* RETURN  */
+    DESL_DIR = 290,                /* DESL_DIR  */
+    DESL_ESQ = 291,                /* DESL_ESQ  */
+    SWITCH = 292,                  /* SWITCH  */
+    CASE = 293,                    /* CASE  */
+    BREAK = 294,                   /* BREAK  */
+    DEFAULT = 295,                 /* DEFAULT  */
+    TYPEDEF = 296                  /* TYPEDEF  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -113,42 +108,38 @@ extern int yydebug;
 #define ELSE 262
 #define WHILE 263
 #define GE 264
-#define LE 265
-#define NE 266
-#define EQ 267
-#define NUM 268
-#define ID 269
-#define FLOAT 270
-#define CHAR 271
-#define DOUBLE 272
-#define VOID 273
-#define LONG 274
-#define SHORT 275
-#define UNSIGNED 276
-#define SIGNED 277
-#define SIZEOF 278
-#define AT_MOD 279
-#define FOR 280
-#define AND 281
-#define OR 282
-#define INC 283
-#define DEC 284
-#define AT_SOMA 285
-#define AT_SUBT 286
-#define AT_MULT 287
-#define AT_DIV 288
-#define STRUCT 289
-#define RETURN 290
-#define DESL_DIR 291
-#define DESL_ESQ 292
-#define SWITCH 293
-#define CASE 294
-#define BREAK 295
-#define DEFAULT 296
-#define TYPEDEF 297
-#define DESL_ESQ 298
-#define DESL_DIR 299
-#define SIZEOF 300
+#define DO 265
+#define LE 266
+#define NE 267
+#define EQ 268
+#define FLOAT 269
+#define CHAR 270
+#define DOUBLE 271
+#define VOID 272
+#define LONG 273
+#define SHORT 274
+#define UNSIGNED 275
+#define SIGNED 276
+#define SIZEOF 277
+#define AT_MOD 278
+#define FOR 279
+#define AND 280
+#define OR 281
+#define INC 282
+#define DEC 283
+#define AT_SOMA 284
+#define AT_SUBT 285
+#define AT_MULT 286
+#define AT_DIV 287
+#define STRUCT 288
+#define RETURN 289
+#define DESL_DIR 290
+#define DESL_ESQ 291
+#define SWITCH 292
+#define CASE 293
+#define BREAK 294
+#define DEFAULT 295
+#define TYPEDEF 296
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

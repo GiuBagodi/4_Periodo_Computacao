@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
-#include "tokens.h"
+// #include "tokens.h"
+#include "sint.h"
 #include "tabsimb.h"
 int line=1;
 
@@ -72,7 +73,7 @@ int yyerror(char *s) {
 "}"   { return '}'; }
 ","   { return ','; }
 [0-9]+("."[0-9]+)?   { return NUM; }
-[a-zA-Z][a-zA-Z0-9]*   { insere(yytext); return ID; }
+[a-zA-Z_][a-zA-Z0-9]*   { insere(yytext); return ID; }
 \        { ; }
 \n       { line++; }
 \t       { ; }
@@ -83,7 +84,7 @@ int yyerror(char *s) {
 #ifndef yywrap
 int yywrap() { return 1; }
 #endif
-
+/*
 int main(int argc, char** argv) {
 int token;
 	yyin = fopen(argv[1],"r");
@@ -94,4 +95,4 @@ int token;
 	}
 	imprime();
 }
-
+*/
