@@ -54,7 +54,13 @@ Funct_Seq:
     ;
 
 Funct:
-    Type_f ID '('  ')' '{' Decls Statement_Seq'}'
+    Type_f ID '(' Args ')' '{' Decls Statement_Seq'}'
+
+Args:
+    Type_f
+    | Type_f ';' Args
+    |
+    ;
 
 Type_f:
     INT
@@ -132,6 +138,8 @@ Exp : Exp '+' Exp
 	| NUM
 	| ID
 	;
+
+
 
 
 
