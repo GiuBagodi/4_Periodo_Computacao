@@ -1,0 +1,21 @@
+(defun compara (num1 num2)
+  (if (> num1 num2)
+    (format t "~%~d eh maior que ~d" num1 num2)
+    (if (= num1 num2)
+      (format t "~%~d eh igual que ~d" num2 num1)
+      (format t "~%~d eh maior que ~d" num2 num1))))
+  
+(compara 10 20)
+(compara 35 15)
+(compara 100 100)
+
+(defun maioridade(idade)
+  (cond ((and (> idade 0)(< idade 18)) (format t "~%Menor de idade")) 
+        ((and (>= idade 18) (< idade 65)) (format t "~%Maior de idade"))
+        ((>= idade 65) (format t "~%Idoso"))
+        (t(format t "~%Idade invalida!"))))
+
+(maioridade 10)
+(maioridade 30)
+(maioridade 70)
+(maioridade -3)
