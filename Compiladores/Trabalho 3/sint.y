@@ -54,7 +54,14 @@ Funct_Seq:
     ;
 
 Funct:
-    Type_f ID '('  ')' '{' Decls Statement_Seq'}'
+    Type_f ID '(' Args ')' '{' Decls Statement_Seq'}'
+    ;
+
+Args:
+    Type_f ID
+    | Type_f ID ';' Args
+    |
+    ;
 
 Type_f:
     INT
@@ -67,7 +74,7 @@ Type_f:
     ;
 
 Type:
-    INT
+      INT
     | CHAR
     | FLOAT
     | DOUBLE
@@ -76,13 +83,14 @@ Type:
     ;
 
 Decls:
-    Decls Decl ';'
+     Decl ';' Decls
     |
     ;
 
 Decl:
     Type Id_Seq
     ;
+
 Id_Seq:
     ID ',' Id_Seq
     | ID
@@ -118,7 +126,7 @@ While:
     ;
 
 Do_While:
-    DO Compound_Stt WHILE '('Exp')'
+    DO Compound_Stt WHILE '('Exp')' ';'
     ;
 
 Atribuicao : ID '=' Exp ';'
@@ -132,8 +140,6 @@ Exp : Exp '+' Exp
 	| NUM
 	| ID
 	;
-
-
 
 
 

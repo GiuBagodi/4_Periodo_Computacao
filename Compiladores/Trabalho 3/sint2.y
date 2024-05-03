@@ -139,6 +139,15 @@ Exp : Exp '+' Exp
 	| ID
 	;
 
+Exp_op:
+    Exp '>' Exp
+    | Exp '<' Exp
+    | Exp '=' Exp
+    | Exp GE Exp
+    | Exp LE Exp
+    | Exp EQ Exp
+    | Exp NE Exp
+    ;
 
 
 
