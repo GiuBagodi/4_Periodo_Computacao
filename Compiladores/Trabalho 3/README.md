@@ -29,3 +29,6 @@ gcc sint.c -o sint.exe
 ```
 sint.exe teste.c
 ```
+
+### Observação:
+- Alguns tokens não foram utilizados na etapa final do trabalho3 com a finalidade de simplificar o Trabalho 4.
