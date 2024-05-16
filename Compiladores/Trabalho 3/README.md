@@ -31,4 +31,4 @@ sint.exe teste.c
 ```
 
 ### Observação:
-- Alguns tokens não foram utilizados na etapa final do trabalho3 com a finalidade de simplificar o Trabalho 4.
+- Alguns tokens não foram utilizados na etapa final do trabalho3 para simplificar o Trabalho 4.
