@@ -41,6 +41,7 @@
 %token BREAK
 %token DEFAULT
 %token TYPEDEF
+%left '>' '<'
 %left '+' '-'
 %left '*' '/'
 %start Prog
@@ -117,16 +118,16 @@ Statement:
 
 
 If:
-    IF '(' Exp ')' Compound_Stt
-    |IF '('Exp')' Compound_Stt ELSE Compound_Stt
+    IF '(' Exp_Bool ')' Compound_Stt
+    |IF '(' Exp_Bool ')' Compound_Stt ELSE Compound_Stt
     ;
 
 While:
-    WHILE '('Exp')' Compound_Stt
+    WHILE '('Exp_Bool')' Compound_Stt
     ;
 
 Do_While:
-    DO Compound_Stt WHILE '('Exp')' ';'
+    DO Compound_Stt WHILE '('Exp_Bool')' ';'
     ;
 
 Atribuicao : ID '=' Exp ';'
@@ -136,12 +137,29 @@ Exp : Exp '+' Exp
 	| Exp '-' Exp
 	| Exp '*' Exp
 	| Exp '/' Exp
-	| '(' Exp ')'
+	| '(' Exp_Bool ')'
 	| NUM
 	| ID
 	;
 
 
+Exp_Rel :
+      Exp_Rel '>' Exp
+	| Exp_Rel '<' Exp
+	| Exp_Rel GE Exp
+	| Exp_Rel LE Exp
+	| Exp_Rel EQ Exp
+	| Exp_Rel NE Exp
+	| '(' Exp_Rel ')'
+	| NUM
+	| ID
+	;
+
+Exp_Bool :
+      Exp_Bool AND Exp_Rel
+    | Exp_Bool OR Exp_Rel
+    | Exp_Rel
+    ;
 
 %%
 int main(int argc, char **argv) {

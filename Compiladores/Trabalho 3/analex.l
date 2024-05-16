@@ -1,6 +1,5 @@
 %{
 #include <stdio.h>
-// #include "tokens.h"
 #include "sint.h"
 #include "tabsimb.h"
 int line=1;

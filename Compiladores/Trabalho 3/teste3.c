@@ -6,10 +6,19 @@ void teste(int a; char b){
     if (10){
         a=20;
     }
-    if (a){
+    if (a > b){
         a=20;
         b=30;
         c = a+b;
+    }
+    else{
+        if(a >= c){
+            a = c + 10;
+        }
+        if (a <= b && a > c){
+            a = a++;
+
+        }
     }
 }
 int main(int a){
@@ -22,7 +31,7 @@ int main(int a){
         a=20;
         do{
             a=a+b;
-        } while(a+20);
+        } while(a>20);
     }
     if (10){
         a=20;
