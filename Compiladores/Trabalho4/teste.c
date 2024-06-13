@@ -1,6 +1,7 @@
 void main(){
-int a,b,c;
-a=10;
-b = a;
-
+int a,b;
+a= 25;
+println(a);
+b=a;
+println(b);
 }

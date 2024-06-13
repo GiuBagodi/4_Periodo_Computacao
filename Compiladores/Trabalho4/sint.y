@@ -1,10 +1,16 @@
+%union {
+  struct no {
+    int place;
+	char *code;
+  } node;
+  int place;
+}
 %{
 #include "analex.c"
 #include "codigos.h"
 %}
-
-%token NUM
-%token ID
+%token <place> NUM
+%token <place> ID
 %token INT
 %token IF
 %token ELSE
@@ -45,9 +51,16 @@
 %token PRINT
 %token PRINTLN
 %token READ
-%left '>' '<'
+%left AND OR
+%left '>' '<' NE EQ GE LE
 %left '+' '-'
 %left '*' '/'
+
+%type <node> Exp Atribuicao Compound_Stt
+%type <node> Statement Statement_Seq If
+%type <node> While Exp_Bool Exp_Rel Do_While
+
+
 %start Prog
 %%
 Prog : Funct_Seq
@@ -59,7 +72,7 @@ Funct_Seq:
     ;
 
 Funct:
-    Type_f ID '(' Args ')' '{' Decls Statement_Seq'}'
+    Type_f ID '(' Args ')' '{' Decls Statement_Seq'}' { printf("%s",$8.code);}
     ;
 
 Args:
@@ -101,77 +114,80 @@ Id_Seq:
     | ID
     ;
 
-
-Statement_Seq :
-	Statement Statement_Seq
-	|
-	;
+Statement_Seq:
+	Statement				   { create_cod(&$$.code);
+								 insert_cod(&$$.code,$1.code);
+							   }
+	| Statement_Seq Statement  { create_cod(&$$.code);
+								 insert_cod(&$$.code,$1.code);
+								 insert_cod(&$$.code,$2.code);
+						       }
 
 Compound_Stt:
     Statement
-    |'{'Statement_Seq'}'
+    |'{'Statement_Seq'}' {$$ = $2;}
     ;
-
 
 Statement:
     Atribuicao
     | If
     | While
     | Do_While
-    | PRINT '('ID')' ';'
-    | PRINTLN '('ID')' ';'
-    | ID '=' READ '('')' ';'
-    ;
+    | PRINT '(' Exp ')' ';' {}
+	| PRINTLN '(' Exp ')' ';' { Println(&$$,$3);}
+	| ID '=' READ '(' ')' ';' { Read(&$$,$1);  }
+	;
 
 
 If:
-    IF '(' Exp_Bool ')' Compound_Stt
-    |IF '(' Exp_Bool ')' Compound_Stt ELSE Compound_Stt
+    IF '(' Exp_Bool ')' Compound_Stt  { If(&$$,$3,$5); }
+    |IF '(' Exp_Bool ')' Compound_Stt ELSE Compound_Stt  { IfElse(&$$,$3,$5,$7); }
     ;
 
 While:
-    WHILE '('Exp_Bool')' Compound_Stt
+    WHILE '('Exp_Bool')' Compound_Stt  { While(&$$,$3,$5); }
     ;
 
 Do_While:
-    DO Compound_Stt WHILE '('Exp_Bool')' ';'
+    DO Compound_Stt WHILE '('Exp_Bool')' ';' {}
     ;
 
-Atribuicao : ID '=' Exp_Bool ';' {Move($1,$3);}
+Atribuicao : ID '=' Exp_Bool ';'  { Atrib(&$$,$1,$3); }
 	;
 
-Exp : Exp '+' Exp
-	| Exp '-' Exp
-	| Exp '*' Exp
-	| Exp '/' Exp
-	| '(' Exp_Bool ')'
-	| NUM			{$$ = newTemp(); Li($$,$1);}
-	| ID
+Exp : Exp '+' Exp       { ExpAri("add",&$$,$1,$3); }
+	| Exp '-' Exp       { ExpAri("sub",&$$,$1,$3); }
+	| Exp '*' Exp       { ExpAri("mul",&$$,$1,$3); }
+	| Exp '/' Exp       { ExpAri("div",&$$,$1,$3); }
+	| '(' Exp_Bool ')'  {$$ = $2;}
+	| NUM			    {$$.place = newTemp(); Li(&$$,$1);}
+	| ID                {create_cod(&$$.code); $$.place = $1;}
 	;
 
 
 Exp_Rel :
-      Exp_Rel '>' Exp
-	| Exp_Rel '<' Exp
-	| Exp_Rel GE Exp
-	| Exp_Rel LE Exp
-	| Exp_Rel EQ Exp
-	| Exp_Rel NE Exp
-	| '(' Exp_Rel ')'
-	| NUM
-	| ID
+      Exp_Rel '>' Exp   { ExpRel("bgt",&$$,$1,$3);}
+	| Exp_Rel '<' Exp   { ExpRel("blt",&$$,$1,$3);}
+	| Exp_Rel GE Exp    { ExpRel("bge",&$$,$1,$3);}
+	| Exp_Rel LE Exp    { ExpRel("ble",&$$,$1,$3);}
+	| Exp_Rel EQ Exp    { ExpRel("beq",&$$,$1,$3);}
+	| Exp_Rel NE Exp    { ExpRel("bne",&$$,$1,$3);}
+	| Exp
 	;
 
 Exp_Bool :
-      Exp_Bool AND Exp_Rel
-    | Exp_Bool OR Exp_Rel
+      Exp_Bool AND Exp_Rel  { ExpRel("and",&$$,$1,$3);}
+    | Exp_Bool OR Exp_Rel   { ExpRel("or",&$$,$1,$3);}
     | Exp_Rel
     ;
 
 %%
 int main(int argc, char **argv) {
+  freopen("saida.asm","w",stdout);
+  printf(".text\n");
   yyin = fopen(argv[1],"r");
   yyparse();
+
 }
 
 

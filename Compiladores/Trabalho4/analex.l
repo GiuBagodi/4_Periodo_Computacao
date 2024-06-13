@@ -74,8 +74,8 @@ int yyerror(char *s) {
 "{"   { return '{'; }
 "}"   { return '}'; }
 ","   { return ','; }
-[0-9]+("."[0-9]+)?   { yylval - atoi(yytext); return NUM; }
-[a-zA-Z_][a-zA-Z0-9]*   { yylval = insere(yytext); return ID; }
+[0-9]+("."[0-9]+)?   { yylval.place - atoi(yytext); return NUM; }
+[a-zA-Z_][a-zA-Z0-9]*   { yylval.place = insere(yytext); return ID; }
 \        { ; }
 \n       { line++; }
 \t       { ; }
@@ -86,15 +86,4 @@ int yyerror(char *s) {
 #ifndef yywrap
 int yywrap() { return 1; }
 #endif
-/*
-int main(int argc, char** argv) {
-int token;
-	yyin = fopen(argv[1],"r");
-	token = yylex();
-	while(token) {
-		printf("%d -> %s\n", token, yytext);
-		token = yylex();
-	}
-	imprime();
-}
-*/
+

@@ -1156,12 +1156,12 @@ YY_RULE_SETUP
 case 66:
 YY_RULE_SETUP
 #line 77 "analex.l"
-{ yylval - atoi(yytext); return NUM; }
+{ yylval.place - atoi(yytext); return NUM; }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
 #line 78 "analex.l"
-{ yylval = insere(yytext); return ID; }
+{ yylval.place = insere(yytext); return ID; }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
@@ -2210,16 +2210,5 @@ void yyfree (void * ptr )
 #ifndef yywrap
 int yywrap() { return 1; }
 #endif
-/*
-int main(int argc, char** argv) {
-int token;
-	yyin = fopen(argv[1],"r");
-	token = yylex();
-	while(token) {
-		printf("%d -> %s\n", token, yytext);
-		token = yylex();
-	}
-	imprime();
-}
-*/
+
 
