@@ -1,7 +1,12 @@
 void main(){
-int a,b;
-a= 25;
-println(a);
-b=a;
-println(b);
+    int max, i;
+    float num;
+    max = read();
+    num = read();
+    i=0;
+    do{
+        println(i);
+        i= i+1;
+    }while(i<max);
+    println(num);
 }

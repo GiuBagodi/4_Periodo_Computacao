@@ -149,7 +149,7 @@ While:
     ;
 
 Do_While:
-    DO Compound_Stt WHILE '('Exp_Bool')' ';' {}
+    DO Compound_Stt WHILE '('Exp_Bool')' ';' { DoWhile(&$$,$5,$2); }
     ;
 
 Atribuicao : ID '=' Exp_Bool ';'  { Atrib(&$$,$1,$3); }

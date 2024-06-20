@@ -212,3 +212,36 @@ int aux_label_2;
   insert_cod(&While_cmd->code,instrucao);
 
 }
+void DoWhile(struct no *While_cmd, struct no Exp, struct no Compound)
+{
+// adaptado a lista de codigos
+char reg_temp[10];
+int aux_label_1;
+int aux_label_2;
+
+  create_cod(&While_cmd->code);
+
+  // inserir l2:
+  aux_label_1 = newLabel();
+  sprintf(instrucao,"L%d:\n", aux_label_1);
+  insert_cod(&While_cmd->code,instrucao);
+
+  insert_cod(&While_cmd->code,Compound.code);
+
+    insert_cod(&While_cmd->code,Exp.code);
+
+  getName(Exp.place,reg_temp);
+
+
+  aux_label_2 = newLabel();
+  sprintf(instrucao,"\tbeq %s,0,L%d\n", reg_temp,aux_label_2);
+  insert_cod(&While_cmd->code,instrucao);
+
+  sprintf(instrucao,"\tj L%d\n", aux_label_1);
+  insert_cod(&While_cmd->code,instrucao);
+
+  sprintf(instrucao,"L%d:\n", aux_label_2);
+  insert_cod(&While_cmd->code,instrucao);
+
+}
+
