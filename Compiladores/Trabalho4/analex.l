@@ -74,7 +74,7 @@ int yyerror(char *s) {
 "{"   { return '{'; }
 "}"   { return '}'; }
 ","   { return ','; }
-[0-9]+("."[0-9]+)?   { yylval.place - atoi(yytext); return NUM; }
+[0-9]+("."[0-9]+)?   { yylval.place = atoi(yytext); return NUM; }
 [a-zA-Z_][a-zA-Z0-9]*   { yylval.place = insere(yytext); return ID; }
 \        { ; }
 \n       { line++; }
