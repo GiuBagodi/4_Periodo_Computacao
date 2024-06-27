@@ -57,8 +57,9 @@
 %left '*' '/'
 
 %type <node> Exp Atribuicao Compound_Stt
-%type <node> Statement Statement_Seq If
-%type <node> While Exp_Bool Exp_Rel Do_While
+%type <node> Statement Statement_Seq If Decls_Args
+%type <node> While Exp_Bool Exp_Rel Do_While Funct
+%type <node> Args
 
 
 %start Prog
@@ -72,14 +73,20 @@ Funct_Seq:
     ;
 
 Funct:
-    Type_f ID '(' Args ')' '{' Decls Statement_Seq'}' { printf("%s",$8.code);}
+    Type_f ID '(' Decls_Args ')' '{' Decls Statement_Seq'}' { Funcao(&$$,$2,$4,$8);}
+    ;
+
+Decls_Args:
+    Type_f ID {}
+    | Type_f ID ';' Args {}
+    |   {}
     ;
 
 Args:
-    Type_f ID
-    | Type_f ID ';' Args
-    |
-    ;
+	  Exp ',' Args
+	| Exp
+	|
+	;
 
 Type_f:
     INT
@@ -136,6 +143,7 @@ Statement:
     | PRINT '(' Exp ')' ';' {}
 	| PRINTLN '(' Exp ')' ';' { Println(&$$,$3);}
 	| ID '=' READ '(' ')' ';' { Read(&$$,$1);  }
+	| ID '(' Args ')' ';' { Call(&$$,$1,$3)}
 	;
 
 

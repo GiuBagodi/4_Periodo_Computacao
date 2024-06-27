@@ -245,3 +245,46 @@ int aux_label_2;
 
 }
 
+void Funcao(struct no *Funcao_cmd, int Id, struct no Args, struct no Compound){
+    create_cod(&Funcao_cmd->code);
+    ObtemNome(Id);
+    sprintf(instrucao,"%s:\n", nome);
+    insert_cod(&Funcao_cmd->code,instrucao);
+    insert_cod(&Funcao_cmd->code,Compound.code);
+
+    if(strcmp(nome,"main") == 0){
+        sprintf(instrucao,"\tli $v0, 10\n", nome);
+        insert_cod(&Funcao_cmd->code,instrucao);
+        sprintf(instrucao,"\tsyscall\n", nome);
+        insert_cod(&Funcao_cmd->code,instrucao);
+
+    }
+    else{
+        sprintf(instrucao,"\tjr $ra\n", nome);
+        insert_cod(&Funcao_cmd->code,instrucao);
+    }
+
+    printf("%s",Funcao_cmd->code);
+}
+
+void Call(struct no *Call_cmd, int Id, struct no Args){
+    create_cod(&Call_cmd->code);
+    ObtemNome(Id);
+    sprintf(instrucao,"jal %s\n", nome);
+    insert_cod(&Funcao_cmd->code,instrucao);
+    insert_cod(&Funcao_cmd->code,Compound.code);
+    if(strcmp(nome,"main") == 0){
+        sprintf(instrucao,"\tli $v0, 10\n", nome);
+        insert_cod(&Funcao_cmd->code,instrucao);
+        sprintf(instrucao,"\tsyscall\n", nome);
+        insert_cod(&Funcao_cmd->code,instrucao);
+
+    }
+    else{
+        sprintf(instrucao,"\tjr $ra\n", nome);
+        insert_cod(&Funcao_cmd->code,instrucao);
+    }
+
+    printf("%s",Funcao_cmd->code);
+}
+
