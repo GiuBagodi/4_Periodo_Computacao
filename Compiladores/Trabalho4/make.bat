@@ -1,3 +1,4 @@
 flex -oanalex.c analex.l
-bison -o sint.c sint.y -d
-gcc sint.c -o sint.exe
+bison -o mycomp.c mycomp.y -d
+gcc mycomp.c -o mycomp.exe
+

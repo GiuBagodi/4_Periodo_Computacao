@@ -3,7 +3,7 @@
 #define MAX 1000
 
 struct symbol {
-   char nome[50];
+   char nome[30];
    int tamanho;
    int tipo;
 };
@@ -11,7 +11,7 @@ struct symbol {
 struct symbol tabela[MAX];
 
 int tam = 0;
-// Procura nome, retorna a posicao se achar, retorna -1 se nao achar
+
 int procura(char *nome) {
 int i;
   for(i=0;i<tam;i++)
@@ -31,8 +31,9 @@ int pos;
   return tam++;
 }
 
-char nome[50];
+char nome[30];
 char * ObtemNome(int pos) {
+int i;
   if (pos >= 0 ) {
     strcpy(nome,tabela[pos].nome);
   }
@@ -42,7 +43,7 @@ char * ObtemNome(int pos) {
 void imprime()
 {
 int i;
-printf("\nFuncao 'imprime()' chamada\n");
+  printf("\nTABELA DE SIMBOLOS\n");
   for(i=0;i<tam;i++)
     printf("%d - %s\n",i, tabela[i].nome);
 }

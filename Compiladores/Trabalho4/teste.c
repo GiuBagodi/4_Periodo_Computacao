@@ -1,9 +1,8 @@
-void imprime(int a){
-    println(a);
-}
-void main(){
-    int a;
-    a = 10;
-
-
+main() {
+	int a,b,c,d;
+	a = read();
+	b = read();	
+	c = a + b + 10;
+	println(c);
+	
 }
